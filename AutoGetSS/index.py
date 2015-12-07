@@ -24,6 +24,7 @@ class AutoGetGeneralSS():
         self.node_url = '/node.php'
         self.targetUrls = [] 
 
+    #日志记录
     @staticmethod
     def loger(content):
          if not os.path.exists('logger'):
@@ -33,7 +34,7 @@ class AutoGetGeneralSS():
          f.write('\r\n')
          f.flush()
          f.close()
-        
+    #模拟登录，从网页中获取含有配置文件的地址
     def getTargetUrls(self):
         r = self.session.post(url=str(self.main_url+self.login_url),data=self.data)
         print self.main_url+self.login_url
@@ -46,7 +47,8 @@ class AutoGetGeneralSS():
             for i in xrange(0,len(nodeUrls),2):
                 self.targetUrls.append(self.main_url+nodeUrls[i].get('href'))
             print '[+]targetUrls has been finished.'
-                
+
+    #保存SS数据到本地SS配制文件中
     def saveSS(self,localSSPath):
         f = open(localSSPath,'r')
         config = str(f.read())
@@ -66,6 +68,7 @@ class AutoGetGeneralSS():
         
             
 def main(config_file_path):
+    #从配置文件中读取mainUrl，用户和本地ss配置文件路径
     cf = ConfigParser.ConfigParser()
     cf.read(config_file_path)
     
