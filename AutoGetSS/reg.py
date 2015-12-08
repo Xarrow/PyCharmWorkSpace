@@ -23,10 +23,10 @@ class RegSS():
         self.session = requests.session()
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36',
-            'Host': 'www.zhihu.com',
-            'Origin': 'http://www.zhihu.com',
+            'Host': 'user.jumpss.com',
+            'Origin': 'http://user.jumpss.com',
             'Connection': 'keep-alive',
-            'Referer': 'http://www.zhihu.com/',
+            'Referer': 'http://user.jumpss.com/user/register.php',
             'Content-Type': 'application/x-www-form-urlencoded',
             'X-Requested-With': 'XMLHttpRequest'
         }
@@ -55,6 +55,8 @@ class RegSS():
 
 if __name__=='__main__':
     main_url = 'http://user.jumpss.com/user'
-    r = RegSS(main_url,'aaaa','aaaa@gmail.com','aaaaa')
+    '''昵称(中文至少两个，英文与数字至少五位)
+        密码(至少7位数'''
+    r = RegSS(main_url,'张三','aaaa7567rewrfsefa@gmail.com','aaaaaa')
     r.getCaptcha()
     r.reg1()
