@@ -7,7 +7,11 @@ import os
 import time
 from subprocess import Popen
 import webbrowser
+import logging
+import ConfigParser
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -32,6 +36,8 @@ class RegSS():
         }
 
     def getCaptcha(self):
+        logging.info("Start get captcha ")
+
         timsstamp = str(int(time.time() * 1000))
         captcha_URL = 'http://user.jumpss.com/authnum.php?1'
         print captcha_URL
@@ -47,21 +53,32 @@ class RegSS():
         except:
             raise '[!]Captha get failed,error from method of getCaptcha().'
         self.keys = str(raw_input("[+]input captcha:"))
+        logging.info("[+]The captcha is :%s",self.keys)
 
     def reg1(self):
-
-        r= self.session.post(url=(self.main_url+self.reg),
+        logging.info("Start register a new user")
+        r2 = self.session.post(url=(self.main_url+self.reg),
                              data=dict(email=self.email,name=self.name,passwd=self.passwd,repasswd=self.passwd,code='',keys=self.keys,invitee='')
                              )
-        print self.main_url+self.reg
-        print self.keys
-        print r.text
-
-
-if __name__=='__main__':
-    main_url = 'http://user.jumpss.com/user'
-    '''昵称(中文至少两个，英文与数字至少五位)
-        密码(至少7位数'''
-    r = RegSS(main_url,'张三','rewrfsefa@gmail.com','aaaaaaaa')
+        if 'ok' in str(r2.text):
+            logging.info("register info:%s",r2.text)
+            logging.info("register success")
+            logging.info('register email:%s , passwd:%s'%(self.email,self.passwd))
+            logging.info("register finished")
+        else:
+            logging.info('[!]register failed.')
+            logging.info(r2.text)
+def main(config_file_path):
+    cf = ConfigParser.ConfigParser()
+    cf.read(config_file_path)
+    mainUrl = cf.get("registerInfo","mainUrl")
+    nick = cf.get("registerInfo","nick")
+    passwd = cf.get("registerInfo","passwd")
+    email = cf.get("registerInfo","email")
+    r = RegSS(mainUrl,nick,email,passwd)
     r.getCaptcha()
     r.reg1()
+
+###################Test##########################
+if __name__=='__main__':
+    main('config.ini')
