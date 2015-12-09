@@ -93,6 +93,7 @@ def main(config_file_path):
     if r.reg1():
         # 写入配置文件
         # cf.add_section("TestConfigParser")
+
         rawUserLists = cf.get("loginGeneralSS", "userlists")
         cf.set("loginGeneralSS", "userlists", rawUserLists + "|" + r.email + "&" + r.passwd)
         cf.write(open("config.ini", "wb"))
