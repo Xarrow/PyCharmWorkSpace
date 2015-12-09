@@ -80,6 +80,8 @@ class RegSS():
             logging.info("register finished")
             return False
 
+
+
 def main(config_file_path):
     r = RegSS
     cf = ConfigParser.ConfigParser()
