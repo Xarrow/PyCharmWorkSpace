@@ -1,1 +1,0 @@
-[+]targetUrls is :http://user.jumpss.com/user/node_json.php?id=2

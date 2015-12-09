@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Jian'
 import requests
-from bs4 import  BeautifulSoup
+from bs4 import BeautifulSoup
 import sys
 import os
 import time
@@ -16,12 +16,14 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 '''http://user.jumpss.com/user/register.php'''
+
+
 class RegSS():
-    def __init__(self,main_url,nick,email,passwd):
+    def __init__(self, main_url, nick, email, passwd):
         self.main_url = main_url
-        self.name= nick
+        self.name = nick
         self.email = email
-        self.passwd= passwd
+        self.passwd = passwd
         self.keys = ''
         self.reg = '/_reg.php'
         self.session = requests.session()
@@ -45,7 +47,7 @@ class RegSS():
         if not os.path.exists("captcha"):
             os.mkdir("captcha")
         # save captcha
-        #@sys.path[0]
+        # @sys.path[0]
         try:
             with open("captcha\\" + timsstamp + '.png', 'wb') as f:
                 f.write(captcha.content)
@@ -53,32 +55,41 @@ class RegSS():
         except:
             raise '[!]Captha get failed,error from method of getCaptcha().'
         self.keys = str(raw_input("[+]input captcha:"))
-        logging.info("[+]The captcha is :%s",self.keys)
+        logging.info("[+]The captcha is :%s", self.keys)
 
     def reg1(self):
         logging.info("Start register a new user")
-        r2 = self.session.post(url=(self.main_url+self.reg),
-                             data=dict(email=self.email,name=self.name,passwd=self.passwd,repasswd=self.passwd,code='',keys=self.keys,invitee='')
-                             )
+        r2 = self.session.post(url=(self.main_url + self.reg),
+                               data=dict(email=self.email, name=self.name, passwd=self.passwd, repasswd=self.passwd,
+                                         code='', keys=self.keys, invitee='')
+                               )
         if 'ok' in str(r2.text):
-            logging.info("register info:%s",r2.text)
             logging.info("register success")
-            logging.info('register email:%s , passwd:%s'%(self.email,self.passwd))
-            logging.info("register finished")
+            logging.info('register email:%s , passwd:%s' % (self.email, self.passwd))
         else:
             logging.info('[!]register failed.')
-            logging.info(r2.text)
+
+        # unicode 转中文参考 http://windkeepblow.blog.163.com/blog/static/1914883312013988185783/
+        logging.info("register info:%s", r2.text.decode("unicode_escape"))
+        logging.info("register finished")
+
+
 def main(config_file_path):
     cf = ConfigParser.ConfigParser()
     cf.read(config_file_path)
-    mainUrl = cf.get("registerInfo","mainUrl")
-    nick = cf.get("registerInfo","nick")
-    passwd = cf.get("registerInfo","passwd")
-    email = cf.get("registerInfo","email")
-    r = RegSS(mainUrl,nick,email,passwd)
+    #写入配置文件
+    # cf.add_section("TestConfigParser")
+    # rawUserLists = cf.get("loginGeneralSS","userlists")
+    # cf.set("loginGeneralSS","userlists", rawUserLists+'|Test1&test1')
+    # cf.write(open("config.ini","wb"))
+    mainUrl = cf.get("registerInfo", "mainUrl")
+    nick = cf.get("registerInfo", "nick")
+    passwd = cf.get("registerInfo", "passwd")
+    email = cf.get("registerInfo", "email")
+    r = RegSS(mainUrl, nick, email, passwd)
     r.getCaptcha()
     r.reg1()
 
 ###################Test##########################
-if __name__=='__main__':
+if __name__ == '__main__':
     main('config.ini')
