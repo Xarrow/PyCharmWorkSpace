@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Jian'
-import requests
+try:
+    import requests
+except ImportError:
+    print 'requests module not found.'
 from bs4 import BeautifulSoup
 import sys
 import os
@@ -66,29 +69,37 @@ class RegSS():
         if 'ok' in str(r2.text):
             logging.info("register success")
             logging.info('register email:%s , passwd:%s' % (self.email, self.passwd))
+            # unicode 转中文参考 http://windkeepblow.blog.163.com/blog/static/1914883312013988185783/
+            logging.info("register info:%s", r2.text.decode("unicode_escape"))
+            logging.info("register finished")
+            return True
         else:
             logging.info('[!]register failed.')
-
-        # unicode 转中文参考 http://windkeepblow.blog.163.com/blog/static/1914883312013988185783/
-        logging.info("register info:%s", r2.text.decode("unicode_escape"))
-        logging.info("register finished")
+            # unicode 转中文参考 http://windkeepblow.blog.163.com/blog/static/1914883312013988185783/
+            logging.info("register info:%s", r2.text.decode("unicode_escape"))
+            logging.info("register finished")
+            return False
 
 
 def main(config_file_path):
+    r = RegSS
     cf = ConfigParser.ConfigParser()
     cf.read(config_file_path)
-    #写入配置文件
-    # cf.add_section("TestConfigParser")
-    # rawUserLists = cf.get("loginGeneralSS","userlists")
-    # cf.set("loginGeneralSS","userlists", rawUserLists+'|Test1&test1')
-    # cf.write(open("config.ini","wb"))
     mainUrl = cf.get("registerInfo", "mainUrl")
     nick = cf.get("registerInfo", "nick")
     passwd = cf.get("registerInfo", "passwd")
     email = cf.get("registerInfo", "email")
     r = RegSS(mainUrl, nick, email, passwd)
     r.getCaptcha()
-    r.reg1()
+    if r.reg1():
+        # 写入配置文件
+        # cf.add_section("TestConfigParser")
+        rawUserLists = cf.get("loginGeneralSS", "userlists")
+        cf.set("loginGeneralSS", "userlists", rawUserLists + "|" + r.email + "&" + r.passwd)
+        cf.write(open("config.ini", "wb"))
+    else:
+        pass
+
 
 ###################Test##########################
 if __name__ == '__main__':
