@@ -76,6 +76,8 @@ def main(config_file_path):
     userlists = cf.get('loginGeneralSS','userlists')
     localSSPath = cf.get('local','shadowscoksPath')
 
+
+
     users = userlists.split('|')
     for i in users:
         email = i.split('&')[0]
