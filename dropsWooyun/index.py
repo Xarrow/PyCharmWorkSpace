@@ -8,25 +8,20 @@ fix:
     to 'result += "".join(wrap(para, self.body_width))'
 """
 
-import requests
 from bs4 import BeautifulSoup
 import html2text2
 import sys
 import os
 import logging
 import helixUtils
-
+import time
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 class WooYunArticle():
     def __init__(self):
-        self.mainUrl = "http://drops.wooyun.org/"
-        self.targetUrls = []
-        self.errorUrls = []
+        self.helix = helixUtils.Helix("http://drops.wooyun.org/")
 
     """
         遍历网页从中获取文章地址放入targetUrls[]中
@@ -37,19 +32,19 @@ class WooYunArticle():
     def getTagetUrlsFromWebPages(self):
         logging.info("starting getTargetUrlsFromWebPages.")
         f = open(r'targetUrls.txt', 'wb')
-        req = requests.get(url=self.mainUrl)
+        req = self.helix.session.get(url=self.helix.mainUrl)
         soup1 = BeautifulSoup(req.text)
         start = 1
         last = int(soup1.find('a', {'class': 'last'}).get('href').split('/')[-1])
         for i in xrange(start, last, 1):
-            r = requests.get(url='http://drops.wooyun.org/page/index'.replace('index', str(i)))
+            r = self.helix.session.get(url='http://drops.wooyun.org/page/index'.replace('index', str(i)))
             soup2 = BeautifulSoup(r.text)
             for i in soup2.find_all("a", {'rel': 'bookmark'}):
-                self.targetUrls.append(i.get('href'))
+                self.helix.targetPool.append(i.get('href'))
                 f.writelines(i.get('title').encode('utf-8') + ':' + i.get('href'))
                 f.write('\r\n')
                 logging.info('%s %s has been saved in targetUrls.txt' % (i.get('title'), i.get('href')))
-        logging.info('一共抓取 :%d 条链接.' % len(self.targetUrls))
+        logging.info('一共抓取 :%d 条链接.' % len(self.helix.targetPool))
         logging.info("finish getTargetUrlsFromWebPages.")
 
     """
@@ -67,10 +62,11 @@ class WooYunArticle():
              'http://drops.wooyun.org/tips/839',
              'http://drops.wooyun.org/papers/929'
              ]
+        i = self.helix.total_flag + 1
+        j = self.helix.error_flag + 1
         logging.info('正在抓取文章喵..............')
-        i = 1
-        for url in self.targetUrls:
-            r = requests.get(url=url)
+        for url in self.helix.targetPool:
+            r = self.helix.session.get(url=url, headers=self.helix.headers_pc)
             soup = BeautifulSoup(r.text.encode('utf-8'))
             title = soup.h1.string
             content = soup.article
@@ -78,17 +74,26 @@ class WooYunArticle():
             if not os.path.exists('markdownFile'):
                 os.mkdir("markdownFile")
             try:
-                f = open("markdownFile//" + title + ".md", 'w')
+                f = open(r"markdownFile//" + title + ".md", 'w')
                 f.write(str(html2text2.html2text(content.encode('utf-8'))))
                 f.flush()
                 f.close()
                 logging.info('第%d条 %s : %s' % (i, title, url))
             except:
-                self.errorUrls.append(url)
+                self.helix.errorPool.append(url)
                 logging.warn('第%d条 %s : %s 存在问题.' % (i, title, url))
+                logging.info("正在处理异常 喵...........")
+                updatedtitle = str(title).replace('/', '-').encode("utf-8")
+                f = open(r'markdownFile//'+str(time.time())+'.txt', 'w')
+                f.write(str(html2text2.html2text(content.encode('utf-8'))))
+                f.flush()
+                f.close()
+                logging.info('第%d条 [%s -----> %s]'%(j, title,updatedtitle))
+                j += 1
                 pass
             i += 1
-        logging.info('一共抓取 %d 篇文章,正确率%s%%' % (i, str(i / 1)))
+
+        logging.info('一共抓取 %d 篇文章,错误 %d ,错误率%s%%' % (i, j, format((float(j) / float(i)), '.2%')))
         logging.info("finish getArticles.")
 
 
