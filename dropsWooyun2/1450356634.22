@@ -1,0 +1,8 @@
+15y-12-17 20:50 - root - INFO - starting getTargetUrlsFromWebPages.
+15y-12-17 20:50 - requests.packages.urllib3.connectionpool - INFO - Starting new HTTP connection (1): drops.wooyun.org
+15y-12-17 20:50 - requests.packages.urllib3.connectionpool - DEBUG - "GET / HTTP/1.1" 200 None
+15y-12-17 20:50 - requests.packages.urllib3.connectionpool - DEBUG - "GET /page/1 HTTP/1.1" 200 None
+15y-12-17 20:50 - root - INFO - 链接已经存在.
+15y-12-17 20:50 - root - INFO - 正在抓取文章喵..............
+15y-12-17 20:50 - root - INFO - 一共抓取 1 篇文章,错误 1 ,错误率100.00%%
+15y-12-17 20:50 - root - INFO - finish getArticles.

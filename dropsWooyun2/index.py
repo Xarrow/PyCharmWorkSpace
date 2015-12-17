@@ -32,8 +32,6 @@ class WooYunArticle():
 
     def getTagetUrlsFromWebPages(self):
         logging.info("starting getTargetUrlsFromWebPages.")
-        # 记录目标url链接
-        f = open(r'targetUrls.txt', 'wb')
         # 获取乌云知识库首页内容
         req = self.helix.session.get(url=self.helix.mainUrl, headers=self.helix.headers_pc)
         # 用beautifulsoup解析
@@ -51,19 +49,19 @@ class WooYunArticle():
             # 使用beautifulsoup解析出文章的连接
             for i in soup2.find_all("a", {'rel': 'bookmark'}):
                 # 判断firstTag 是否在第一条，如果不在就继续抓取，如果在则说明已经抓取过
-                if firstNo !=\
-                        i.get('href'):
+                if firstNo not in  i.get('href'):
                     # 将目标链接放入 targetPool List当中
                     self.helix.targetPool.append(i.get('href'))
-                    # 将链接写入到文件中，作为记录
-                    f.writelines(i.get('title').encode('utf-8') + ':' + i.get('href'))
-                    f.write('\r\n')
                     # 日志记录链接已经写入文件
                     logging.info('%s %s has been saved in targetUrls.txt' % (i.get('title'), i.get('href')))
                 else:
-                    self.helix.setFistTag(self.helix.targetPool[0])
-                    logging.info("抓取完成.")
-                    return
+                    try:
+                        self.helix.setFistTag(self.helix.targetPool[0])
+                        logging.info("链接已经存在.")
+                    except:
+                        logging.info("链接已经存在.")
+                    finally:
+                        return
         self.helix.setFistTag(self.helix.targetPool[0])
         logging.info('一共抓取 :%d 条链接.' % len(self.helix.targetPool))
         logging.info("finish getTargetUrlsFromWebPages.")
@@ -74,15 +72,6 @@ class WooYunArticle():
     """
 
     def getArticle(self):
-        log = open('log.txt', 'wb')
-        t = ['http://drops.wooyun.org/papers/58',
-             'http://drops.wooyun.org/papers/59',
-             'http://drops.wooyun.org/tools/427',
-             'http://drops.wooyun.org/papers/596',
-             'http://drops.wooyun.org/papers/680',
-             'http://drops.wooyun.org/tips/839',
-             'http://drops.wooyun.org/papers/929'
-             ]
         i = self.helix.total_flag + 1
         j = self.helix.error_flag + 1
         logging.info('正在抓取文章喵..............')
