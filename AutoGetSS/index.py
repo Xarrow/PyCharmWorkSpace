@@ -43,6 +43,7 @@ class AutoGetGeneralSS():
             log.logger.info('targetUrls has been finished.')
         else:
             log.logger.warn("timeout 10s, check you net connect.")
+            pass
 
     # 保存SS数据到本地SS配制文件中
     def saveSS(self, localSSPath):
