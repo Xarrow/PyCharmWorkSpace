@@ -1,0 +1,708 @@
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Starting new HTTP connection (1): user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "POST /user//_login.php HTTP/1.1" 200 54
+15y-12-24 20:28 - log - INFO - http://user.jumpss.com/user//_login.php
+15y-12-24 20:28 - log - INFO - loger:{"code":"1","ok":"1","msg":"\u6b22\u8fce\u56de\u6765"}
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Resetting dropped connection: user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "GET /user//node.php HTTP/1.1" 200 None
+15y-12-24 20:28 - log - INFO - targetUrls has been finished.
+15y-12-24 20:28 - log - INFO - targetUrls is :http://user.jumpss.com/user/node_json.php?id=1
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Resetting dropped connection: user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "GET /user/node_json.php?id=1 HTTP/1.1" 200 137
+15y-12-24 20:28 - log - INFO - targetUrls is :http://user.jumpss.com/user/node_json.php?id=2
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Resetting dropped connection: user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "GET /user/node_json.php?id=2 HTTP/1.1" 200 134
+15y-12-24 20:28 - log - INFO - {
+"configs" : [
+{
+"server":"203.146.235.131",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":15249,
+"local_port":1080,
+"password":"VaPtK4zB",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":15249,
+"local_port":1080,
+"password":"VaPtK4zB",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":14558,
+"local_port":1080,
+"password":"nyTmnxCy",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":14558,
+"local_port":1080,
+"password":"nyTmnxCy",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,  {
+"server" : "203.146.235.131",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "115.29.148.86",
+"server_port" : 26,
+"password" : "ious123",
+"method" : "rc4-md5",
+"remarks" : "aliyun"}
+
+],
+"index" : 12,
+"global" : false,
+"enabled" : false,
+"shareOverLan" : true,
+"isDefault" : false,
+"localPort" : 1080,
+"pacUrl" : null,
+"useOnlinePac" : false}
+
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Starting new HTTP connection (1): user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "POST /user//_login.php HTTP/1.1" 200 54
+15y-12-24 20:28 - log - INFO - http://user.jumpss.com/user//_login.php
+15y-12-24 20:28 - log - INFO - loger:{"code":"1","ok":"1","msg":"\u6b22\u8fce\u56de\u6765"}
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Resetting dropped connection: user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "GET /user//node.php HTTP/1.1" 200 None
+15y-12-24 20:28 - log - INFO - targetUrls has been finished.
+15y-12-24 20:28 - log - INFO - targetUrls is :http://user.jumpss.com/user/node_json.php?id=1
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Resetting dropped connection: user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "GET /user/node_json.php?id=1 HTTP/1.1" 200 137
+15y-12-24 20:28 - log - INFO - targetUrls is :http://user.jumpss.com/user/node_json.php?id=2
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Resetting dropped connection: user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "GET /user/node_json.php?id=2 HTTP/1.1" 200 134
+15y-12-24 20:28 - log - INFO - {
+"configs" : [
+{
+"server":"203.146.235.131",
+"server_port":14558,
+"local_port":1080,
+"password":"nyTmnxCy",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":14558,
+"local_port":1080,
+"password":"nyTmnxCy",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":15249,
+"local_port":1080,
+"password":"VaPtK4zB",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":15249,
+"local_port":1080,
+"password":"VaPtK4zB",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":14558,
+"local_port":1080,
+"password":"nyTmnxCy",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":14558,
+"local_port":1080,
+"password":"nyTmnxCy",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,  {
+"server" : "203.146.235.131",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "115.29.148.86",
+"server_port" : 26,
+"password" : "ious123",
+"method" : "rc4-md5",
+"remarks" : "aliyun"}
+
+],
+"index" : 12,
+"global" : false,
+"enabled" : false,
+"shareOverLan" : true,
+"isDefault" : false,
+"localPort" : 1080,
+"pacUrl" : null,
+"useOnlinePac" : false}
+
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Starting new HTTP connection (1): user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "POST /user//_login.php HTTP/1.1" 200 54
+15y-12-24 20:28 - log - INFO - http://user.jumpss.com/user//_login.php
+15y-12-24 20:28 - log - INFO - loger:{"code":"1","ok":"1","msg":"\u6b22\u8fce\u56de\u6765"}
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Resetting dropped connection: user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "GET /user//node.php HTTP/1.1" 200 None
+15y-12-24 20:28 - log - INFO - targetUrls has been finished.
+15y-12-24 20:28 - log - INFO - targetUrls is :http://user.jumpss.com/user/node_json.php?id=1
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Resetting dropped connection: user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "GET /user/node_json.php?id=1 HTTP/1.1" 200 137
+15y-12-24 20:28 - log - INFO - targetUrls is :http://user.jumpss.com/user/node_json.php?id=2
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - INFO - Resetting dropped connection: user.jumpss.com
+15y-12-24 20:28 - requests.packages.urllib3.connectionpool - DEBUG - "GET /user/node_json.php?id=2 HTTP/1.1" 200 134
+15y-12-24 20:28 - log - INFO - {
+"configs" : [
+{
+"server":"203.146.235.131",
+"server_port":15249,
+"local_port":1080,
+"password":"VaPtK4zB",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":15249,
+"local_port":1080,
+"password":"VaPtK4zB",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":14558,
+"local_port":1080,
+"password":"nyTmnxCy",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":14558,
+"local_port":1080,
+"password":"nyTmnxCy",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":15249,
+"local_port":1080,
+"password":"VaPtK4zB",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":15249,
+"local_port":1080,
+"password":"VaPtK4zB",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":14558,
+"local_port":1080,
+"password":"nyTmnxCy",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":14558,
+"local_port":1080,
+"password":"nyTmnxCy",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"203.146.235.131",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,{
+"server":"80.72.47.164",
+"server_port":13943,
+"local_port":1080,
+"password":"48CYIBJx",
+"timeout":600,
+"method":"aes-256-cfb"
+}
+
+
+
+
+,  {
+"server" : "203.146.235.131",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 15249,
+"password" : "VaPtK4zB",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 14558,
+"password" : "nyTmnxCy",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "203.146.235.131",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "80.72.47.164",
+"server_port" : 13943,
+"password" : "48CYIBJx",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "115.29.148.86",
+"server_port" : 26,
+"password" : "ious123",
+"method" : "rc4-md5",
+"remarks" : "aliyun"}
+
+],
+"index" : 12,
+"global" : false,
+"enabled" : false,
+"shareOverLan" : true,
+"isDefault" : false,
+"localPort" : 1080,
+"pacUrl" : null,
+"useOnlinePac" : false}
+
