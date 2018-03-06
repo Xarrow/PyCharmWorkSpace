@@ -4,9 +4,8 @@ __author__ = 'zhangjian5'
 __version__ = 'beta1.0'
 
 import sys
-import datetime
 import time
-import os
+
 import ConfigParser
 
 reload(sys)
