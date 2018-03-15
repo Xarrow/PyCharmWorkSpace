@@ -82,7 +82,7 @@ class Helix:
         self.error_flag = 0
 
     @staticmethod
-    def setFistTag(firstTag):
+    def setFirstTag(firstTag):
         cf.set("configure", "firstTag", firstTag)
         cf.write(open('config.ini', 'wb'))
 
