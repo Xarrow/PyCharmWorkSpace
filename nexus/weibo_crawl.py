@@ -10,13 +10,16 @@
 import logging
 import sys
 import os
-import requests
+import threading
 
+import requests
+from concurrent.futures import ThreadPoolExecutor
 level = logging.DEBUG
 format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 datefmt = '%Y-%m-%d %H:%M'
 logging.basicConfig(level=level, format=format, datefmt=datefmt)
 logger = logging.getLogger(__name__)
+
 
 import datetime
 
@@ -25,7 +28,7 @@ CURRENT_TIME = now.strftime('%Y-%m-%d %H:%M:%S')
 CURRENT_YEAR = now.strftime('%Y')
 CURRENT_YEAR_WITH_DATE = now.strftime('%Y-%m-%d')
 
-
+pool = ThreadPoolExecutor(20)
 def get_weibo(container_id='1076033788713745', page=25):
     api = "https://m.weibo.cn/api/container/getIndex"
 
@@ -74,6 +77,11 @@ def get_weibo(container_id='1076033788713745', page=25):
 
                 yield mblog
             page += -1
+
+        t = threading.Thread(target=gen_result,args=(page,))
+        t.start()
+        # future = pool.submit(gen_result,page)
+
 
     yield from gen_result(page)
 
