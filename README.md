@@ -5,4 +5,4 @@
 * dropsWooyun   爬取乌云知识库（原网站已经挂了，不再维护）
 * nexus 新知识sample2
 
-    [sample_typing.py](): Python3.6.4 中typing模块示例
+    [sample_typing.py](blob/master/nexus/sample_typing.py): Python3.6.4 中typing模块示例
