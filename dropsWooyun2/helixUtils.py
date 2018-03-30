@@ -4,9 +4,8 @@ __author__ = 'zhangjian5'
 __version__ = 'beta1.0'
 
 import sys
-import datetime
 import time
-import os
+
 import ConfigParser
 
 reload(sys)
@@ -83,7 +82,7 @@ class Helix:
         self.error_flag = 0
 
     @staticmethod
-    def setFistTag(firstTag):
+    def setFirstTag(firstTag):
         cf.set("configure", "firstTag", firstTag)
         cf.write(open('config.ini', 'wb'))
 
