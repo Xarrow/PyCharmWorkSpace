@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Jian'
+import log
 try:
     import requests
 except ImportError:
-    print 'requests module not found.'
-from bs4 import BeautifulSoup
+    log.logger.warn('requests module not found.')
+try:
+    from bs4 import BeautifulSoup
+except ImportError:
+    log.logger.warn("bs module not found.")
 import sys
 import os
 import time
 from subprocess import Popen
-import webbrowser
-import logging
 import ConfigParser
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -41,7 +41,7 @@ class RegSS():
         }
 
     def getCaptcha(self):
-        logging.info("Start get captcha ")
+        log.logger.info("Start get captcha ")
 
         timsstamp = str(int(time.time() * 1000))
         captcha_URL = 'http://user.jumpss.com/authnum.php?1'
@@ -58,26 +58,26 @@ class RegSS():
         except:
             raise '[!]Captha get failed,error from method of getCaptcha().'
         self.keys = str(raw_input("[+]input captcha:"))
-        logging.info("[+]The captcha is :%s", self.keys)
+        log.logger.info("[+]The captcha is :%s", self.keys)
 
     def reg1(self):
-        logging.info("Start register a new user")
+        log.logger.info("Start register a new user")
         r2 = self.session.post(url=(self.main_url + self.reg),
                                data=dict(email=self.email, name=self.name, passwd=self.passwd, repasswd=self.passwd,
                                          code='', keys=self.keys, invitee='')
                                )
         if 'ok' in str(r2.text):
-            logging.info("register success")
-            logging.info('register email:%s , passwd:%s' % (self.email, self.passwd))
+            log.logger.info("register success")
+            log.logger.info('register email:%s , passwd:%s' % (self.email, self.passwd))
             # unicode 转中文参考 http://windkeepblow.blog.163.com/blog/static/1914883312013988185783/
-            logging.info("register info:%s", r2.text.decode("unicode_escape"))
-            logging.info("register finished")
+            log.logger.info("register info:%s", r2.text.decode("unicode_escape"))
+            log.logger.info("register finished")
             return True
         else:
-            logging.info('[!]register failed.')
+            log.logger.info('[!]register failed.')
             # unicode 转中文参考 http://windkeepblow.blog.163.com/blog/static/1914883312013988185783/
-            logging.info("register info:%s", r2.text.decode("unicode_escape"))
-            logging.info("register finished")
+            log.logger.info("register info:%s", r2.text.decode("unicode_escape"))
+            log.logger.info("register finished")
             return False
 
 def main(config_file_path):

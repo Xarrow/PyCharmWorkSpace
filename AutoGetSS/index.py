@@ -4,19 +4,16 @@ Created on Tue Nov 24 13:19:43 2015
 
 @author: zhangjian5
 """
-import logging
-
+import log
 try:
     import requests
 except ImportError:
-    logging.warn("can not find requests module")
+   log.logger.warn("can not find requests module")
 try:
     from bs4 import BeautifulSoup
 except ImportError:
-    logging.warn("can not find BeautifulSoup4 module")
+    log.logger.warn("can not find BeautifulSoup4 module")
 import sys
-import os
-import time
 import ConfigParser
 
 reload(sys)
@@ -32,31 +29,21 @@ class AutoGetGeneralSS():
         self.node_url = '/node.php'
         self.targetUrls = []
 
-        # 日志记录
-
-    @staticmethod
-    def loger(content):
-        if not os.path.exists('logger'):
-            os.mkdir('logger')
-        f = open(r'logger//logger.txt', 'wb')
-        f.write(content)
-        f.write('\r\n')
-        f.flush()
-        f.close()
-
     # 模拟登录，从网页中获取含有配置文件的地址
     def getTargetUrls(self):
-        r = self.session.post(url=str(self.main_url + self.login_url), data=self.data)
-        print self.main_url + self.login_url
+        r = self.session.post(url=str(self.main_url + self.login_url), data=self.data, timeout=10)
+        log.logger.info(self.main_url + self.login_url)
         if r.status_code == 200:
-            AutoGetGeneralSS.loger((time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())) + ":" + r.text))
-            print '[+]loger:%s' % r.text
+            log.logger.info('loger:%s' % r.text.decode("unicode_escape"))
             ss_r = self.session.get(url=self.main_url + self.node_url)
             soup = BeautifulSoup(ss_r.text)
             nodeUrls = soup.find_all('a', {'role': 'menuitem', 'target': '_blank'})
             for i in xrange(0, len(nodeUrls), 2):
                 self.targetUrls.append(self.main_url + nodeUrls[i].get('href'))
-            print '[+]targetUrls has been finished.'
+            log.logger.info('targetUrls has been finished.')
+        else:
+            log.logger.warn("timeout 10s, check you net connect.")
+            pass
 
     # 保存SS数据到本地SS配制文件中
     def saveSS(self, localSSPath):
@@ -66,12 +53,14 @@ class AutoGetGeneralSS():
         s = ''
         tmp = ''
         for j in self.targetUrls:
-            AutoGetGeneralSS.loger(('[+]targetUrls is :%s' % j))
-            print '[+]targetUrls is :%s' % j
+            log.logger.info('targetUrls is :%s' % j)
             r = self.session.get(url=j)
             tmp += r.text + ','
-            s = config[:config.index('[') + 2] + tmp + config[config.index('[') + 2:]
-        print s
+            try:
+                s = config[:config.index('[') + 2] + tmp + config[config.index('[') + 2:]
+            except None:
+                log.logger.warn("config.ini read None.")
+        log.logger.info(s)
         fw = open(localSSPath, 'wb')
         fw.write(s)
         fw.close()

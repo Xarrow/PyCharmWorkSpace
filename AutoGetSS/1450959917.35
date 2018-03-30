@@ -1,0 +1,3 @@
+15y-12-24 20:25 - requests.packages.urllib3.connectionpool - INFO - Starting new HTTP connection (1): user.jumpss.com
+15y-12-24 20:25 - requests.packages.urllib3.connectionpool - DEBUG - "POST /user//_login.php HTTP/1.1" 200 54
+15y-12-24 20:25 - root - INFO - http://user.jumpss.com/user//_login.php
